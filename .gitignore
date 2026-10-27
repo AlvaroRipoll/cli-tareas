@@ -1,0 +1,19 @@
+# Entorno virtual y caché de Python
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.pytest_cache/
+
+# Claves y secretos (¡nunca subir!)
+.env
+.env.*
+!.env.example
+
+# Editores / SO
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
