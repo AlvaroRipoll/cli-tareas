@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "acciones": [
+    {
+      "nombre": "ordenar-descargas",
+      "descripcion": "Mueve PDF y documentos de Baixades a Documents/Ordenados",
+      "tipo": "mover",
+      "origen": "~/Baixades",
+      "filtro": { "extensiones": [".pdf", ".docx", ".odt"] },
+      "destino": "~/Documents/Ordenados"
+    },
+    {
+      "nombre": "renombrar-fotos",
+      "descripcion": "Renombra fotos de Imatges con su fecha: 2026-10-27_001.jpg",
+      "tipo": "renombrar",
+      "origen": "~/Imatges",
+      "filtro": { "extensiones": [".jpg", ".jpeg", ".png"] },
+      "plantilla": "{fecha:%Y-%m-%d}_{n:03}{ext}"
+    },
+    {
+      "nombre": "limpiar-temporales",
+      "descripcion": "Borra .tmp y .bak con mas de 30 dias en Proyectos",
+      "tipo": "borrar",
+      "origen": "~/Proyectos",
+      "filtro": { "patron": "\\.(tmp|bak)$", "mas_antiguo_que_dias": 30 },
+      "confirmar": true
+    }
+  ]
+}
