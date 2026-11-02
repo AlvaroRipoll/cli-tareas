@@ -24,6 +24,20 @@
       "origen": "~/Proyectos",
       "filtro": { "patron": "\\.(tmp|bak)$", "mas_antiguo_que_dias": 30 },
       "confirmar": true
+    },
+    {
+      "nombre": "resumir-apuntes",
+      "descripcion": "Resume con IA los apuntes .md/.txt de Documents/Apuntes (crea .resumen.md)",
+      "tipo": "ia-resumir",
+      "origen": "~/Documents/Apuntes",
+      "filtro": { "extensiones": [".md", ".txt"] }
+    },
+    {
+      "nombre": "renombrar-por-contenido",
+      "descripcion": "La IA propone un nombre descriptivo para los .md de Documents/Apuntes",
+      "tipo": "ia-renombrar",
+      "origen": "~/Documents/Apuntes",
+      "filtro": { "extensiones": [".md"] }
     }
   ]
 }
