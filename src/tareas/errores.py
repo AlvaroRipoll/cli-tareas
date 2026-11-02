@@ -11,3 +11,7 @@ class ConfigError(TareasError):
 
 class AccionNoValida(TareasError):
     """La accion pedida no existe o no es valida."""
+
+
+class IaError(TareasError):
+    """La IA no esta disponible (sin red, sin clave o fallo del servidor)."""

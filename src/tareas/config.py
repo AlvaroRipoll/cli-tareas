@@ -9,7 +9,7 @@ from typing import Any
 
 from tareas.errores import ConfigError
 
-TIPOS_VALIDOS = {"mover", "renombrar", "copiar", "borrar"}
+TIPOS_VALIDOS = {"mover", "renombrar", "copiar", "borrar", "ia-resumir", "ia-renombrar"}
 _NOMBRE_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 
 
