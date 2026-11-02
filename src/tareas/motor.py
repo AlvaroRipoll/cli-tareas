@@ -6,6 +6,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 from tareas.acciones import Accion
+from tareas.errores import TareasError
 
 
 @dataclass
@@ -45,7 +46,7 @@ class Motor:
                 continue
             try:
                 self.accion.operar(src, dst, simular)
-            except OSError as exc:
+            except (OSError, TareasError) as exc:
                 res.omitidos += 1
                 res.detalles.append({"origen": str(src), "destino": str(dst),
                                      "estado": f"error: {exc}"})

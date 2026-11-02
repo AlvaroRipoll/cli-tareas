@@ -9,6 +9,7 @@ from datetime import datetime
 from pathlib import Path
 from typing import Optional
 
+from tareas import ia
 from tareas.errores import AccionNoValida
 
 
@@ -127,7 +128,39 @@ class Borrar(Accion):
         src.unlink()
 
 
-REGISTRO = {"mover": Mover, "copiar": Copiar, "renombrar": Renombrar, "borrar": Borrar}
+class IaResumir(Accion):
+    def destino_para(self, p, n):
+        return p.parent / (p.stem + ".resumen.md")
+
+    def operar(self, src, dst, simular):
+        if simular or dst is None:
+            return
+        texto = src.read_text(encoding="utf-8", errors="replace")
+        dst.write_text(ia.resumir(texto) + "\n", encoding="utf-8")
+
+
+class IaRenombrar(Accion):
+    def destino_para(self, p, n):
+        return p
+
+    def operar(self, src, dst, simular):
+        if simular:
+            return
+        texto = src.read_text(encoding="utf-8", errors="replace")
+        nuevo = ia.nombre_sugerido(texto).strip().strip("\"'").replace(" ", "-").lower()
+        if not nuevo:
+            return
+        src.rename(src.with_name(nuevo + src.suffix))
+
+
+REGISTRO = {
+    "mover": Mover,
+    "copiar": Copiar,
+    "renombrar": Renombrar,
+    "borrar": Borrar,
+    "ia-resumir": IaResumir,
+    "ia-renombrar": IaRenombrar,
+}
 
 
 def crear_accion(d: dict) -> Accion:
