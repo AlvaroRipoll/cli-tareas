@@ -47,7 +47,7 @@ def _post(payload: dict) -> str:
         headers={"Content-Type": "application/json", "Authorization": "Bearer " + _key()},
     )
     try:
-        with urllib.request.urlopen(req, timeout=60, context=_ca_context()) as r:
+        with urllib.request.urlopen(req, timeout=180, context=_ca_context()) as r:
             cuerpo = json.loads(r.read().decode("utf-8"))
     except urllib.error.URLError as exc:
         raise IaError(f"Sin conexion con la IA del centro ({getattr(exc, 'reason', exc)}).") from None
