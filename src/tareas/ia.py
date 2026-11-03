@@ -11,7 +11,7 @@ from pathlib import Path
 
 from tareas.errores import IaError
 
-_MODELO_DEFECTO = "simarro/Qwen38-DualSpark-medium"
+_MODELO_DEFECTO = "Qwen38-DualSpark-medium"
 
 
 def _ca_context() -> ssl.SSLContext:
